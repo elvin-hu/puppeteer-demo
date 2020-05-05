@@ -8,9 +8,9 @@ exports.pdf = async (request, response) => {
     height: '720px',
 		headerTemplate: "<p></p>",
 		footerTemplate: "<p></p>",
-		displayHeaderFooter: false,
+		displayHeaderFooter: true,
 		margin: {
-			top: "10px",
+			top: "0px",
 			bottom: "30px"
 		},
 		printBackground: true
@@ -28,9 +28,21 @@ exports.pdf = async (request, response) => {
 
 
   
-  const page = await browser.newPage();
-  await page.goto(url);
-  const pdf = await page.pdf(options);
+  const page = await browser.newPage().catch(function (error) {
+    /* Handle error here for browser new page and return
+       expected value for page if things fail */
+    console.log(error);
+  });;
+  await page.goto(url, {waitUntil: 'networkidle2'}).catch(function (error) {
+    /* Handle error here for browser new page and return
+       expected value for page if things fail */
+    console.log(error);
+  });;
+  const pdf = await page.pdf(options).catch(function (error) {
+    /* Handle error here for browser new page and return
+       expected value for page if things fail */
+    console.log(error);
+  });; 
   await browser.close();
   response.setHeader("Content-Type", "application/pdf");
   response.setHeader("Content-Length", pdf.length);

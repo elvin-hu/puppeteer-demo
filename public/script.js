@@ -11,6 +11,7 @@ else {
 console.log("Received from address bar", urlToConvert)
 // omnibox.innerHTML = urlToConvert;
 omnibox.value = urlToConvert;
+  document.querySelector("#loader").classList = ""
 
     try {
       const encoded = encodeURIComponent(urlToConvert);
@@ -27,13 +28,16 @@ omnibox.value = urlToConvert;
     } catch (err) {
       console.log(err)
     }
+}
 
-
+document.querySelector("iframe").onload = function() {
+  document.querySelector("#loader").classList = "hidden"
 }
 
 goButton.addEventListener('click', async function() {
   
    var url = omnibox.value;
+  document.querySelector("#loader").classList = ""
   
   console.log("The url to convert is", url)
   
