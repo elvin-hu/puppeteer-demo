@@ -1,0 +1,41 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HTML to PDF something something</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  <body>
+        <div class="browser">
+      <div class="safari-top">
+        <div class="buttons">
+          <span class="button close"></span>
+          <span class="button minimise"></span>
+          <span class="button maximise"></span>
+        </div>
+        <div class="title">Site title</div>
+        <div id="buttons-spacer"></div>
+      </div>
+      <div class="address-bar">
+        <form class="omnibar" action="/pdf" method="get">
+          <input type="url" id="url" name="url" value="about:blank">
+        </form>
+        <div id="go">Go</div>
+      </div>
+      <div class="main">
+        <iframe id="browser-area" src="about:blank"></iframe>
+      </div>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="script.js"></script>
+</html>
+
